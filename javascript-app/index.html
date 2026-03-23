@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript + Keycloak</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>JavaScript + Keycloak</h1>
+      <nav>
+        <button type="button" data-page="public">Public</button>
+        <button type="button" data-page="secured">Secured</button>
+      </nav>
+      <div class="auth">
+        <span id="username"></span>
+        <button type="button" id="btn-login">Login</button>
+        <button type="button" id="btn-logout">Logout</button>
+      </div>
+    </header>
+    <main>
+      <section id="public-page">
+        <h2>Public endpoints (no login)</h2>
+        <p>These call the Node.js backend without authentication.</p>
+        <div class="actions">
+          <button type="button" id="btn-health">GET /api/public/health</button>
+          <button type="button" id="btn-info">GET /api/public/info</button>
+        </div>
+        <pre id="public-output"></pre>
+      </section>
+      <section id="secured-page" class="hidden">
+        <h2>Secured endpoints (Bearer token)</h2>
+        <p>Calls to the Node.js backend include your Keycloak access token.</p>
+        <div id="secured-login-prompt" class="login-prompt">
+          <p>Log in with Keycloak to call protected backend endpoints.</p>
+          <button type="button" class="primary" id="btn-secured-login">Login</button>
+        </div>
+        <div id="secured-content" class="hidden">
+          <div class="actions">
+            <button type="button" id="btn-me">GET /api/secured/me</button>
+            <button type="button" id="btn-data">GET /api/secured/data</button>
+            <button type="button" id="btn-token">Print token</button>
+          </div>
+          <pre id="secured-output"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

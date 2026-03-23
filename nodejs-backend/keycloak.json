@@ -1,0 +1,8 @@
+{
+  "realm": "master",
+  "auth-server-url": "http://localhost:8080/",
+  "ssl-required": "external",
+  "resource": "nodejs-backend",
+  "bearer-only": true,
+  "public-client": false
+}
