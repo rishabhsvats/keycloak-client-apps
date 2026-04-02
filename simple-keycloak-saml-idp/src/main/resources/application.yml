@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          keycloak:
+            # Must match Keycloak SAML "Client ID" — Keycloak uses it as <Audience>
+            entity-id: "http://localhost:8080/saml2/service-provider-metadata/keycloak"
+            # signing:
+            #   credentials:
+            #     - private-key-location: classpath:saml/sp-private.key
+            #       certificate-location: classpath:saml/sp-certificate.crt
+            assertingparty:
+              metadata-uri: http://localhost:8081/realms/demo/protocol/saml/descriptor
+              # Keycloak metadata often says WantAuthnRequestsSigned=true; without SP signing
+              # keys Spring would fail startup. Set false so AuthnRequests are not signed.
+              singlesignon:
+                sign-request: false

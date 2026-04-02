@@ -13,6 +13,9 @@ This repository contains sample applications that integrate with **Keycloak** fo
 | **react-app**         | Frontend | 5173 | React (Vite) + keycloak-js; calls Node.js backend |
 | **angular-app**       | Frontend | 4200 | Angular + keycloak-angular; calls Node.js backend |
 | **javascript-app**    | Frontend | 5174 | Vanilla JavaScript + keycloak-js; calls Node.js backend |
+| **simple-keycloak-saml-idp** | SAML SP | 8080 | Spring Boot SAML 2.0 service provider; Keycloak as SAML IdP (IdP-initiated and SP-initiated SSO demo) |
+
+**simple-keycloak-saml-idp** — For realm/client setup (SAML client ID, ACS URL, IdP-initiated URL), build/run, and security notes for this learning-oriented sample, see [`simple-keycloak-saml-idp/README.md`](simple-keycloak-saml-idp/README.md).
 
 ## Keycloak setup
 
