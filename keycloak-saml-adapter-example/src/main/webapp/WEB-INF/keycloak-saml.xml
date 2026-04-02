@@ -1,0 +1,21 @@
+<keycloak-saml-adapter>
+    <SP entityID="http://localhost:8080/helloworld/secured"
+        sslPolicy="EXTERNAL"
+        logoutPage="SPECIFY YOUR LOGOUT PAGE!">
+        <IDP entityID="idp">
+            <SingleSignOnService signRequest="false"
+                                 validateResponseSignature="false"
+                                 validateAssertionSignature="false"
+                                 requestBinding="POST"
+                                 bindingUrl="http://localhost:8081/realms/eapdemo/protocol/saml"/>
+            <SingleLogoutService signRequest="false"
+                                 signResponse="false"
+                                 validateRequestSignature="true"
+                                 validateResponseSignature="true"
+                                 requestBinding="POST"
+                                 responseBinding="POST"
+                                 postBindingUrl="http://localhost:8081/realms/eapdemo/protocol/saml"
+                                 redirectBindingUrl="http://localhost:8081/realms/eapdemo/protocol/saml"/>
+        </IDP>
+    </SP>
+</keycloak-saml-adapter>

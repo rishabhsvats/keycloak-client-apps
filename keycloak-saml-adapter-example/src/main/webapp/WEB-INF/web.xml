@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SAML auth-method and security constraints for JBoss EAP + Keycloak SAML adapter.
+    See: https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/8.1/html/using_single_sign-on_with_jboss_eap/
+-->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0"
+         metadata-complete="false">
+
+    <display-name>helloworld</display-name>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>secured</web-resource-name>
+            <url-pattern>/secured</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <!-- Realm role name from Red Hat build of Keycloak (must match role mapping / token) -->
+            <role-name>Admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Declare roles referenced in auth-constraint (Servlet spec). -->
+    <security-role>
+        <role-name>Admin</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>KEYCLOAK-SAML</auth-method>
+    </login-config>
+</web-app>
