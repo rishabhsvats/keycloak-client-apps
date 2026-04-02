@@ -20,6 +20,8 @@ pnpm-debug.log*
 *.pem
 
 # --- Java / Maven / Gradle ---
+# Local .m2 cache copied under a project directory (should not be committed)
+.m2/
 target/
 !.mvn/wrapper/maven-wrapper.jar
 pom.xml.tag
