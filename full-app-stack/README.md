@@ -14,7 +14,6 @@ A comprehensive reference implementation demonstrating **Keycloak authentication
 - [Test Users](#test-users)
 - [Project Structure](#project-structure)
 - [Technology Stack](#technology-stack)
-- [Teaching Scenarios](#teaching-scenarios)
 - [Troubleshooting](#troubleshooting)
 
 ## Architecture Overview
