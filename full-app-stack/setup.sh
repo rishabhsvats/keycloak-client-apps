@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ONE script to set up everything for the Task Management Teaching Application
-# This script configures Keycloak with protocol mappers and user attributes
+# Complete setup script for the Task Management System with Keycloak
+# Configures protocol mappers, client scopes, roles, users, and user attributes
 
 set -e
 

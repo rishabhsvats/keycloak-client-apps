@@ -1,6 +1,6 @@
-# Keycloak Concepts - Teaching Guide
+# Keycloak Implementation Guide
 
-This guide walks through key Keycloak authentication and authorization concepts using the Task Management System. Each section includes conceptual explanation, Keycloak Admin UI navigation, code references, and hands-on demonstrations.
+This guide provides a comprehensive walkthrough of Keycloak authentication and authorization patterns using the Task Management System as a reference implementation. Each section includes conceptual explanations, Keycloak Admin UI navigation, code references, and practical demonstrations.
 
 ## Table of Contents
 
@@ -296,7 +296,7 @@ public Response createProject(@Valid Project project) {
      })
      ```
    - Response: **403 Forbidden** - "Access denied. Required scope(s): task:write"
-   - **Key teaching point:** Even as admin, this client cannot modify tasks!
+   - **Key point:** Even as admin, this client cannot modify tasks due to missing scope!
 
 3. **Compare token scopes:**
    - In Task Manager, open DevTools → Console:
@@ -594,9 +594,9 @@ Some mappers can be conditional based on user attributes or roles:
    - Claim value: `gold`
    - This scope would only be assigned to premium clients
 
-### Teaching Points
+### Key Concepts
 
-**Key Concepts to Emphasize:**
+**Important points to understand:**
 
 1. **Protocol mappers are scope-attached**
    - Scopes granted → mappers execute → claims added
@@ -1242,9 +1242,9 @@ Ensures user email addresses are valid and owned by the user.
 
 ---
 
-## Summary: Teaching Flow
+## Summary: Learning Path
 
-**Recommended order for teaching:**
+**Recommended order for exploring concepts:**
 
 1. **Start here:** Public vs Confidential Clients
    - Shows basic client types
@@ -1279,11 +1279,11 @@ Ensures user email addresses are valid and owned by the user.
    - Registration, password reset
    - Completes the picture
 
-**Key Teaching Moments:**
+**Key Demonstrations:**
 
-1. **Defense in depth:** Show how admin cannot create tasks from Admin Dashboard (lacks scope)
-2. **SSO magic:** Login to Task Manager, open Admin Dashboard - no re-auth needed
-3. **Token refresh:** Watch countdown, see toast notification
-4. **Role restrictions:** Login as developer - limited UI, backend enforces
-5. **Email flows:** Use MailHog to see verification and password reset emails
+1. **Defense in depth:** Admin cannot create tasks from Admin Dashboard (lacks scope)
+2. **Single Sign-On:** Login to Task Manager, open Admin Dashboard - no re-authentication needed
+3. **Token refresh:** Watch countdown, see toast notification when token refreshes
+4. **Role restrictions:** Login as developer - limited UI, backend enforces permissions
+5. **Email flows:** Use MailHog to observe verification and password reset emails
 

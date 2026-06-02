@@ -1,4 +1,4 @@
-# Getting Started - Task Management Teaching App
+# Getting Started
 
 ## Quick Setup (5 minutes)
 
@@ -86,9 +86,9 @@ console.log("Team:", token.team);                  // "Platform Team"
 - Admin Dashboard token has: admin_level, access_level (from admin:users, admin:stats scopes)
 - Both have: name, email (from shared task:read scope)
 
-## Teaching Scenarios
+## Usage Examples
 
-### 1. SSO Demo
+### 1. Single Sign-On
 1. Login to Task Manager as admin
 2. Click "Admin Dashboard" link
 3. **No re-login required!** ← Single Sign-On
@@ -111,11 +111,11 @@ console.log("Team:", token.team);                  // "Platform Team"
 - **MailHog:** http://localhost:8025 (fake email server)
 - **PostgreSQL:** localhost:5432
 
-## Full Documentation
+## Documentation
 
-- **CONTEXT.md** - Architecture and technical details
-- **TEACHING-GUIDE.md** - Step-by-step Keycloak concepts  
-- **README.md** - Complete reference
+- **CONTEXT.md** - Architecture and technical implementation details
+- **GUIDE.md** - Comprehensive Keycloak concepts and patterns
+- **README.md** - Complete reference and usage examples
 
 ## Troubleshooting
 

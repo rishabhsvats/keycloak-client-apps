@@ -1,6 +1,6 @@
-# Task Management System - Keycloak Teaching Application
+# Task Management System - Keycloak Reference Implementation
 
-A comprehensive teaching application demonstrating **Keycloak authentication and authorization** concepts for new support engineers. This system showcases Single Sign-On (SSO), OAuth2/OIDC flows, role-based access control (RBAC), and client scope-based permissions.
+A comprehensive reference implementation demonstrating **Keycloak authentication and authorization** patterns and best practices. This system showcases Single Sign-On (SSO), OAuth2/OIDC flows, role-based access control (RBAC), client scope-based permissions, and protocol mappers.
 
 **🚀 Want to get started quickly? See [GETTING-STARTED.md](GETTING-STARTED.md)**
 
@@ -138,7 +138,7 @@ Admin Dashboard token (has `task:read`, `admin:users`, `admin:stats`):
 }
 ```
 
-**Key Teaching Point:** Same user, different information based on client scopes and their protocol mappers!
+**Key Insight:** Same user receives different token claims based on client scopes and their protocol mappers, enabling fine-grained information disclosure control.
 
 ### 5. Permission Examples
 
@@ -306,9 +306,9 @@ full-app/
 - **react-router-dom** - Routing
 - **react-hot-toast** - Notifications
 
-## Teaching Scenarios
+## Usage Examples
 
-### Scenario 1: SSO Demonstration
+### Example 1: SSO Demonstration
 
 1. Open Task Manager (http://localhost:5173)
 2. Log in as `admin@taskmanager.com` / `admin123`
@@ -317,7 +317,7 @@ full-app/
 5. **Observe:** No login required - you're already authenticated!
 6. Check the scopes in both apps - they're different
 
-### Scenario 2: Scope-Based Authorization
+### Example 2: Scope-Based Authorization
 
 1. Log in to Admin Dashboard as admin
 2. View system statistics (has `admin:stats` scope)
@@ -327,27 +327,27 @@ full-app/
 6. **Observe:** Admin Dashboard has no "create" buttons
 7. **Why:** Admin Dashboard lacks `task:write` scope
 
-### Scenario 3: Role-Based Permissions
+### Example 3: Role-Based Permissions
 
 1. Log in to Task Manager as `dev@taskmanager.com`
-2. **Observe:** No "Create Project" button (not admin/PM)
+2. **Notice:** No "Create Project" button (lacks admin/project-manager role)
 3. Click on a project
-4. **Observe:** Can update status of assigned tasks only
+4. **Notice:** Can update status of assigned tasks only
 5. Log out and log in as `manager@taskmanager.com`
-6. **Observe:** Can create projects and manage all tasks
+6. **Notice:** Can create projects and manage all tasks
 
-### Scenario 4: Token Refresh
+### Example 4: Token Refresh
 
 1. Log in to Task Manager
 2. Watch the token expiration countdown
 3. Wait (token expires in 5 minutes by default)
 4. Make an action (navigate, create project)
-5. **Observe:** "Token refreshed" notification appears
+5. **Notice:** "Token refreshed" notification appears
 6. Token countdown resets to 5 minutes
 
-### Scenario 5: Protocol Mappers & Token Claims
+### Example 5: Protocol Mappers & Token Claims
 
-**Prerequisites:** Run `./setup-user-attributes.sh` to add custom user attributes
+**Prerequisites:** Run `./setup.sh` to configure protocol mappers and user attributes
 
 1. Log in to Task Manager as `manager@taskmanager.com` / `manager123`
 2. Open browser DevTools → Console
@@ -370,18 +370,18 @@ full-app/
      manager: token.manager_email
    });
    ```
-4. **Observe:** Different scopes add different claims via protocol mappers
+4. **Notice:** Different scopes add different claims via protocol mappers
 5. Log in to Admin Dashboard as `admin@taskmanager.com`
 6. Inspect token - different claims (admin_level, access_level, etc.)
-7. **Key insight:** Same user, different information based on client scopes!
+7. **Key insight:** Same user receives different information based on client scopes
 
-### Scenario 6: User Registration & Email Verification
+### Example 6: User Registration & Email Verification
 
 1. Go to Task Manager login page
 2. Click "Register" (on Keycloak page)
 3. Fill in registration form
 4. Open MailHog (http://localhost:8025)
-5. **Observe:** Verification email received
+5. **Notice:** Verification email received
 6. Click verification link
 7. Log in with new credentials
 
@@ -435,19 +435,26 @@ full-app/
 ## Next Steps
 
 1. **Review the code** - Examine how `@RequiresScope` interceptor works
-2. **Read TEACHING-GUIDE.md** - Detailed walkthrough of Keycloak concepts
-3. **Explore Keycloak Admin Console** - See realm configuration
-4. **Test different users** - Experience different permission levels
+2. **Read GUIDE.md** - Detailed walkthrough of Keycloak concepts and implementation patterns
+3. **Explore Keycloak Admin Console** - See realm configuration and customization options
+4. **Test different users** - Experience different permission levels and flows
 5. **Check backend tests** - See how token validation is tested
-6. **Modify scopes** - Try changing client scopes in Keycloak
+6. **Modify scopes** - Experiment with changing client scopes in Keycloak
+7. **Extend the implementation** - Add new roles, scopes, or protocol mappers for your use case
+
+## Learn More
+
+- **GUIDE.md** - Comprehensive guide to Keycloak concepts with code references
+- **CONTEXT.md** - Architectural decisions and implementation details
+- **Keycloak Documentation** - https://www.keycloak.org/documentation
 
 ## Support
 
 For questions or issues:
 1. Check the [Troubleshooting](#troubleshooting) section
 2. Review application logs (backend, frontend console, Docker logs)
-3. Consult Keycloak documentation: https://www.keycloak.org/documentation
+3. Consult Keycloak documentation
 
 ## License
 
-This is a teaching application for internal use.
+MIT License - Feel free to use this as a reference for your own projects.
